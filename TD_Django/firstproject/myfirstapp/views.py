@@ -8,4 +8,4 @@ def formulaire(requests):
 def bonjour(request):
     nom = request.GET("nom")
     prenom = request.GET("prenom")
-    return render(request, "myfirstapp/bonjour.html", {"nom":nom})
+    return render(request, "myfirstapp/bonjour.html", {"nom":nom, "prenom":prenom})
