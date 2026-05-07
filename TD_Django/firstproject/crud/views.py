@@ -19,3 +19,15 @@ def traitement(request):
         return render(request, "crud/affiche.html", {"Livre": Livre})
     else:
         return render(request, "crud/ajout.html", {"form": lform})
+def read(request, id):
+    Livre = models.Livre.objects.get(pk=id)  # méthode pour récupérer les données dans la base avec un id donnée
+    return render(request, "crud/affiche.html", {"Livre": Livre})
+def traitementupdate(request, id):
+    lform = LivreForm(request.POST)
+    if lform.is_valid():
+        Livre = lform.save(commit=False)  # création d'un objet Livre avec les données du formulaire mais sans l'enregistrer dans la base.
+        Livre.id = id;  # modification de l'id de l'objet
+        Livre.save()  # mise à jour dans la base puisque l'id du Livre existe déja.
+        return HttpResponseRedirect("/crud/")  # plutot que d'avoir un gabarit pour nous indiquer que cela c'est bien passé, nous repartons sur une autre action qui renvoie vers la page d'index de notre site (celle avec la liste des entrées)
+    else:
+        return render(request, "crud/update.html", {"form": lform, "id": id})
