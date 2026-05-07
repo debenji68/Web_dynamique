@@ -2,15 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>bonjour</title>
+    <title>Bonjour</title>
 </head>
 <body>
-    {% if nom is not None %}
+    {% if nom != "" %}
     <h1>Bonjour {{nom}} {{prenom}}</h1>
     {% else %}
     <h1> Hello world </h1>
     {% endif %}
-
-
 </body>
 </html>
