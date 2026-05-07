@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <title>Formulaire</title>
-    <link rel="stylesheet" type="text/css" href="{%static 'myfirstapp/formulaire.css' %}">
-</head>
-<body>
-    <form action="/myfirstapp/bonjour/" method="GET">
-        <label for="nom">Nom : </label>
-        <input type="text" name="nom">
-        <br>
-        <label for="prenom">Prénom : </label>
-        <input type="text" name="prenom">
-        <input type="submit" value="envoyer">
+{% extends "myfirstapp/main.html" %}
+<!-- définition de ce que contiendra la balise title du head -->
+{% block title %}
+    Mon formulaire
+{% endblock %}
+{% block content %}
+    <!-- les champs de formulaires -->
+    {{block.super}} <!-- récupére les données par défaut du bloc content du squelette -->
+    <form action="/myfirstapp/bonjour" method="get" />
+    {% csrf_token %}
+        <label for="nom"> Nom :</label>
+        <input type="text" name="nom"/>
+        <label for="prenom"> Prenom :</label>
+        <input type="text" name="prenom"/>
+        <input type="submit" value="envoyer"/>
     </form>
-
-</body>
-</html>
+{% endblock %}
