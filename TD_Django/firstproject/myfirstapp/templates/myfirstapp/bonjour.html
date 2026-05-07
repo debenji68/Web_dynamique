@@ -5,6 +5,12 @@
     <title>bonjour</title>
 </head>
 <body>
-  <h1>bonjour {{nom}} {{prenom}}</h1>
+    {% if nom is not None %}
+    <h1>Bonjour {{nom}} {{prenom}}</h1>
+    {% else %}
+    <h1> Hello world </h1>
+    {% endif %}
+
+
 </body>
 </html>
