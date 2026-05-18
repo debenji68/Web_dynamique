@@ -19,6 +19,7 @@ class Modele(models.Model): #déclare la classe Livre héritant de la classe Mod
     type_moteur = models.CharField(max_length=100)
     prix = models.IntegerField(blank=False)
     resume = models.TextField(null = True, blank = True) # champs de type text long
+    marque = models.ForeignKey("Marque", on_delete=models.CASCADE, default=None)
     def __str__(self):
-        chaine = f"{self.nom}, {self.energie}, {self.nombre_chevaux}, {self.type_moteur}, {self.prix}"
+        chaine = f"{self.nom}, {self.energie}, {self.nombre_chevaux}, {self.type_moteur}, {self.prix}, {self.marque}"
         return chaine
