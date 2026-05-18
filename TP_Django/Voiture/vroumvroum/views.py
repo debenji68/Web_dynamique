@@ -20,4 +20,4 @@ def traitement(request):
 
 def read(request, id):
     Marque = models.Marque.objects.get(pk=id)  # méthode pour récupérer les données dans la base avec un id donnée
-    return render(request, "crud/affiche.html", {"Marque": Marque})
+    return render(request, "vroumvroum/affiche.html", {"Marque": Marque})
