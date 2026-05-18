@@ -3,13 +3,21 @@ from .forms import ModeleForm,MarqueForm
 from . import models
 
 def ajout(request):
-    if request.method == "POST":  # arrive en cas de retour sur cette page après une saisie invalide on récupère donc les données. Normalement nous ne devrions pas passer par ce chemin la pour le traitement des données
-        form = ModeleForm(request)
-        if form.is_valid():  # validation du formulaire.
-            Modele = form.save()  # sauvegarde dans la base
-            return render(request, "vroumvroum/affiche.html", {"Modele": Modele})  #envoie vers une page d'affichage du Livre créé
-        else:
-            return render(request, "vroumvroum/ajout.html", {"form": form})
+    form = ModeleForm()  # création d'un formulaire vide
+    return render(request, "vroumvroum/ajout.html", {"form": form})
+
+def ajoutmarque(request):
+    form = MarqueForm()  # création d'un formulaire vide
+    return render(request, "vroumvroum/ajoutmarque.html", {"form": form})
+
+def traitement(request):
+    lform = MarqueForm(request.POST)
+    if lform.is_valid():
+        Marque = lform.save()
+        return render(request, "vroumvroum/affichemarque.html", {"Marque": Marque})
     else:
-        form = ModeleForm()  # création d'un formulaire vide
-        return render(request, "vroumvroum/ajout.html", {"form": form})
+        return render(request, "vroumvroum/ajoutmarque.html", {"form": lform})
+
+def read(request, id):
+    Marque = models.Marque.objects.get(pk=id)  # méthode pour récupérer les données dans la base avec un id donnée
+    return render(request, "crud/affiche.html", {"Marque": Marque})

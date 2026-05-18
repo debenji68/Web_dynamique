@@ -7,7 +7,7 @@ class Marque(models.Model): #déclare la classe Livre héritant de la classe Mod
     pays_origine = models.CharField(max_length = 50)
     resume = models.TextField(null = True, blank = True) # champs de type text long
     def __str__(self):
-        chaine = f"{self.nom} fonder␣par {self.fondateur} le {self.date_creation} en {self.pays_origine}"
+        chaine = f"{self.nom} fonder par {self.fondateur} le {self.date_creation} en {self.pays_origine}"
         return chaine
 
 from django.db import models
