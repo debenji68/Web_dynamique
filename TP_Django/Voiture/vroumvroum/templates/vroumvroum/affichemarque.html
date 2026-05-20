@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>ajout d'un Livre</title>
-</head>
-<body>
-  <p> vous avez ajouté la marque suivante {{Marque}} {{Marque.id}} </p>
-</body>
-</html>
+<h1>Détails de la marque</h1>
+<ul>
+    <li>Nom : {{ Marque.nom }}</li>
+    <li>Fondateur : {{ Marque.fondateur }}</li>
+    <li>Date de création : {{ Marque.date_creation }}</li>
+    <li>Pays d'origine : {{ Marque.pays_origine }}</li>
+</ul>
+
+<br>
+<a href="/vroumvroum/">
+    <button type="button">Retour à la liste des Marque</button>
+</a>
