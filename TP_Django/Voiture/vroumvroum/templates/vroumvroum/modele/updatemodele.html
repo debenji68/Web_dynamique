@@ -1,8 +1,18 @@
-<form method="post" action="/vroumvroum/modele/updatemodele/{{id}}/">
-    {% csrf_token %}
-    {{ form.as_ul }}
-    <input type="submit" value="Envoyer les données">
-</form>
-
-<br>
-<a href="/vroumvroum/modele/"><button type="button">Annuler et retourner à la liste</button></a>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'vroumvroum/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Modifier un modèle</title>
+</head>
+<body>
+    <h1>Modifier le modèle</h1>
+    <form method="post" action="/vroumvroum/modele/updatemodele/{{id}}/">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" value="Enregistrer les modifications">
+    </form>
+    <a href="/vroumvroum/modele/"><button type="button">Annuler et retourner à la liste</button></a>
+</body>
+</html>

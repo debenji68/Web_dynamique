@@ -1,8 +1,18 @@
-<form method="post" action="/vroumvroum/marque/updatemarque/{{id}}/">
-    {% csrf_token %}
-    {{ form.as_ul }}
-    <input type="submit" value="Envoyer les données">
-</form>
-
-<br>
-<a href="/vroumvroum/marque/"><button type="button">Annuler et retourner à la liste</button></a>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'vroumvroum/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Modifier une marque</title>
+</head>
+<body>
+    <h1>Modifier la marque</h1>
+    <form method="post" action="/vroumvroum/marque/updatemarque/{{id}}/">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" value="Enregistrer les modifications">
+    </form>
+    <a href="/vroumvroum/marque/"><button type="button">Annuler et retourner à la liste</button></a>
+</body>
+</html>

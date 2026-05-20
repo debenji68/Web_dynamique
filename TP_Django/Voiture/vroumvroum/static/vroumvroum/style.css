@@ -1,0 +1,314 @@
+/* =========================================================
+   style.css — vroumvroum
+   Esthétique : minimaliste / editorial / blanc & encre
+   Chemin : vroumvroum/static/vroumvroum/style.css
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap');
+
+/* ── Variables ─────────────────────────────────────────── */
+:root {
+  --bg:         #fafaf8;
+  --surface:    #ffffff;
+  --border:     #e4e4e0;
+  --border-dark:#c8c8c2;
+  --accent:     #1a1a1a;
+  --accent-soft:#f0f0ec;
+  --text:       #2c2c2a;
+  --text-muted: #8a8a84;
+  --danger:     #c0392b;
+  --font-head:  'DM Serif Display', serif;
+  --font-body:  'DM Sans', sans-serif;
+  --radius:     2px;
+  --tr:         140ms ease;
+  --max-w:      720px;
+}
+
+/* ── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+/* ── Wrapper central ───────────────────────────────────── */
+body > * {
+  max-width: var(--max-w);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* ── Titres ────────────────────────────────────────────── */
+h1 {
+  font-family: var(--font-head);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: -.01em;
+  margin: 2.8rem 0 1.6rem;
+  line-height: 1.15;
+}
+
+h2 {
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--accent);
+  margin: 2rem 0 1rem;
+}
+
+/* ── Liens ─────────────────────────────────────────────── */
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--border-dark);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--tr);
+}
+a:hover { text-decoration-color: var(--accent); }
+
+/* lien "Ajouter" style pill discret */
+h1 + a,
+h1 ~ a:not(li a):not(ul a) {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .82rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: .3rem .85rem;
+  border-radius: 99px;
+  margin-bottom: 1.4rem;
+  transition: color var(--tr), border-color var(--tr), background var(--tr);
+}
+h1 + a::before,
+h1 ~ a:not(li a):not(ul a)::before { content: '+'; font-size: 1rem; }
+h1 + a:hover,
+h1 ~ a:not(li a):not(ul a):hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  text-decoration: none;
+}
+
+/* ── Boutons ───────────────────────────────────────────── */
+button,
+input[type="submit"] {
+  font-family: var(--font-body);
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: .03em;
+  padding: .35rem .9rem;
+  border: 1px solid var(--border-dark);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 99px;
+  cursor: pointer;
+  transition: background var(--tr), border-color var(--tr), color var(--tr);
+  white-space: nowrap;
+}
+button:hover,
+input[type="submit"]:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* Bouton secondaire (Retour / Annuler) */
+button[type="button"] {
+  border-color: var(--border);
+  color: var(--text-muted);
+  background: transparent;
+}
+button[type="button"]:hover {
+  background: var(--accent-soft);
+  border-color: var(--border-dark);
+  color: var(--text);
+}
+
+/* Bouton Supprimer */
+a[href*="delete"] button,
+button[style*="red"] {
+  border-color: #e8c8c6 !important;
+  color: var(--danger) !important;
+  background: transparent;
+}
+a[href*="delete"] button:hover,
+button[style*="red"]:hover {
+  background: var(--danger) !important;
+  border-color: var(--danger) !important;
+  color: #fff !important;
+}
+
+/* ── Séparateur ────────────────────────────────────────── */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+
+/* ── Listes (all.html) ─────────────────────────────────── */
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+ul li {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .85rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  transition: background var(--tr);
+  font-size: .9rem;
+}
+ul li:last-child { border-bottom: none; }
+ul li:hover { background: var(--accent-soft); }
+
+/* ── Vues détail (affiche*.html) ───────────────────────── */
+ul.detail, .detail ul {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+ul.detail li, .detail ul li {
+  flex-direction: row;
+  align-items: baseline;
+  gap: 1rem;
+  padding: .7rem 1.1rem;
+}
+ul.detail li::before {
+  content: attr(data-label);
+  font-size: .72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  min-width: 140px;
+  flex-shrink: 0;
+}
+
+/* fallback sans data-label : les li de affichemarque/affichemodele */
+ul:not(form ul) li:not(:has(button)) {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .1rem;
+  font-size: .9rem;
+  color: var(--text);
+}
+
+/* ── Formulaires ───────────────────────────────────────── */
+form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 520px;
+  margin: 1.5rem 0 2rem;
+}
+
+form ul {
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  gap: 1.2rem;
+  margin-bottom: 0;
+}
+form ul li {
+  background: transparent;
+  border: none;
+  border-bottom: none;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .4rem;
+  padding: 0;
+}
+form ul li:hover { background: transparent; }
+
+label {
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: .9rem;
+  padding: .5rem .75rem;
+  outline: none;
+  transition: border-color var(--tr), box-shadow var(--tr);
+  appearance: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(26,26,26,.08);
+}
+textarea { min-height: 100px; resize: vertical; }
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8a84' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  padding-right: 2.2rem;
+}
+
+input[type="submit"] { margin-top: 1rem; border-radius: 99px; }
+
+/* Erreurs Django */
+.errorlist {
+  background: #fdf0ef;
+  border: 1px solid #f0c8c4;
+  border-radius: var(--radius);
+  padding: .3rem .7rem;
+  color: var(--danger);
+  font-size: .8rem;
+  list-style: none;
+  margin-top: .2rem;
+}
+.errorlist li { border: none; padding: 0; background: transparent; }
+.errorlist li:hover { background: transparent; }
+
+/* ── Liens de retour ───────────────────────────────────── */
+a > button[type="button"],
+.back { margin-top: 1rem; display: inline-block; }
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-dark); border-radius: 3px; }
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 600px) {
+  body > * { padding: 0 1rem; }
+  form { padding: 1.2rem; }
+  ul li { flex-wrap: wrap; }
+}
