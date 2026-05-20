@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'vroumvroum/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Modele</title>
+</head>
+<body>
+    <h1>Détails du Modele</h1>
+    <ul>
+        <li>Nom : {{ Modele.nom }}</li>
+        <li>Energie : {{ Modele.energie }}</li>
+        <li>Nombre de chevaux : {{ Modele.nombre_chevaux }}</li>
+        <li>Type de moteur : {{ Modele.type_moteur }}</li>
+        <li>Prix : {{ Modele.prix }}</li>
+        <li>Résumer : {{ Modele.resume }}</li>
+        <li>Marque : {{ Modele.marque }}</li>
+
+
+
+    </ul>
+
+    <br>
+    <a href="/vroumvroum/modele/">
+        <button type="button">Retour à la liste des Modele</button>
+    </a>
+</body>
+</html>

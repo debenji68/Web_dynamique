@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'vroumvroum/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Marque</title>
+</head>
+<body>
+    <h1>Liste des marques</h1>
+    <a href="/vroumvroum/marque/ajoutmarque/">Ajouter une marque</a>
+    <ul>
+        {% for marque in Marque %}
+            <li>
+                <a href="/vroumvroum/marque/updatemarque/{{marque.id}}/"><button>Modifier</button></a>
+
+                <a href="/vroumvroum/marque/deletemarque/{{marque.id}}/" onclick="return confirm('Supprimer cette marque ?')">
+                    <button style="color: red;">Supprimer</button>
+                </a>
+
+                {{marque}}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/vroumvroum/index/"><button>Retour a la page principal</button></a>
+</body>
+</html>

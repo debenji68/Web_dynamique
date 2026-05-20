@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'vroumvroum/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Modele</title>
+</head>
+<body>
+    <h1>Liste des Modeles</h1>
+    <a href="/vroumvroum/modele/ajout/">Ajouter un Modele</a>
+    <ul>
+        {% for modele in Modele %}
+            <li>
+                <a href="/vroumvroum/modele/updatemodele/{{modele.id}}/"><button>Modifier</button></a>
+
+                <a href="/vroumvroum/modele/deletemodele/{{modele.id}}/" onclick="return confirm('Supprimer ce Modele ?')">
+                    <button style="color: red;">Supprimer</button>
+                </a>
+
+                {{modele}}
+            </li>
+        {% endfor %}
+    </ul>
+ <a href="/vroumvroum/index/"><button>Retour a la page principal</button></a>
+</body>
+</html>
