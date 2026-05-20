@@ -5,4 +5,5 @@ urlpatterns = [
     path('ajoutmarque/', views.ajoutmarque),
     path('traitement/',views.traitement),
     path('affiche/<int:id>/',views.read),
+    path('', views.all),
     ]
