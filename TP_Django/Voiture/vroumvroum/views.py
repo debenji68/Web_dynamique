@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .forms import ModeleForm,MarqueForm
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 from . import models
 
 def ajout(request):
@@ -25,3 +27,22 @@ def read(request, id):
 def all(request):
     Marque = list(models.Marque.objects.all())
     return render(request, "vroumvroum/all.html", {"Marque": Marque})
+
+def traitementupdate(request, id):
+    marque = get_object_or_404(models.Marque, pk=id)
+
+    if request.method == "POST":
+        lform = MarqueForm(request.POST, instance=marque)
+        if lform.is_valid():
+            lform.save()
+            return HttpResponseRedirect("/vroumvroum/")
+        else:
+            return render(request, "vroumvroum/updatemarque.html", {"form": lform, "id": id})
+    else:
+        lform = MarqueForm(instance=marque)
+        return render(request, "vroumvroum/updatemarque.html", {"form": lform, "id": id})
+
+def delete(request, id):
+    marque = get_object_or_404(models.Marque, pk=id)
+    marque.delete()
+    return HttpResponseRedirect("/vroumvroum/")
