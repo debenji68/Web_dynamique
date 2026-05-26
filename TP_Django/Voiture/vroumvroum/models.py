@@ -20,7 +20,7 @@ class Modele(models.Model): #déclare la classe Livre héritant de la classe Mod
     prix = models.IntegerField(blank=False)
     resume = models.TextField(null = True, blank = True) # champs de type text long
     marque = models.ForeignKey("Marque", on_delete=models.CASCADE, default=None)
-    image = models.ImageField(upload_to='modeles/', null=True, blank=True)
+    image = models.ImageField(upload_to='modeles/', null=True, blank=False)
     def __str__(self):
         chaine = f"{self.nom}, {self.energie}, {self.nombre_chevaux}, {self.type_moteur}, {self.prix}, {self.marque}"
         return chaine
