@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Modifier le modèle</h1>
-    <form method="post" action="/vroumvroum/modele/updatemodele/{{id}}/">
+    <form method="post" action="/vroumvroum/modele/updatemodele/{{id}}/" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_ul }}
         <input type="submit" value="Enregistrer les modifications">

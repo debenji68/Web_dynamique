@@ -16,7 +16,11 @@
         <li>Prix : {{ Modele.prix }}</li>
         <li>Résumer : {{ Modele.resume }}</li>
         <li>Marque : {{ Modele.marque }}</li>
-
+        {% if Modele.image %}
+        <li>
+            <img src="{{ Modele.image.url }}" alt="Image de {{ Modele.nom }}" style="max-width: 300px; border-radius: 4px; margin-top: .5rem;">
+        </li>
+        {% endif %}
 
 
     </ul>

@@ -9,7 +9,7 @@ def ajout(request):
     return render(request, "vroumvroum/modele/ajout.html", {"form": form})
 
 def traitementmodele(request):
-    lform = ModeleForm(request.POST)
+    lform = ModeleForm(request.POST, request.FILES)
     if lform.is_valid():
         Modele = lform.save()
         return render(request, "vroumvroum/modele/affichemodele.html", {"Modele": Modele})
@@ -28,7 +28,7 @@ def traitementupdatemodele(request, id):
     modele = get_object_or_404(models.Modele, pk=id)
 
     if request.method == "POST":
-        lform = ModeleForm(request.POST, instance=modele)
+        lform = ModeleForm(request.POST, request.FILES, instance=modele)
         if lform.is_valid():
             lform.save()
             return HttpResponseRedirect("/vroumvroum/modele/")
